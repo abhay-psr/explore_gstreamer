@@ -1,0 +1,8 @@
+[
+    {
+        "directory": "/home/hkkd/projects/explore_gstreamer/build",
+        "command": "/usr/bin/clang ../basic_tutorials/t1.c -o basic-t1 -I/usr/include/gstreamer-1.0 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/sysprof-6 -pthread -lgstreamer-1.0 -lgobject-2.0 -lglib-2.0",
+        "file": "../basic_tutorials/t1.c"
+    }
+]
+
