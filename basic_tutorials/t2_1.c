@@ -2,6 +2,11 @@
 
 char PIPELINE_NAME[] = "basic_t2.1_pipeline";
 
+void check_element_created(GstElement *e, char *name) {
+    if (!e) {
+        g_printerr("Failed to create element %s", name);
+    }
+}
 
 
 int gst_main (int argc, char *argv[]) {
@@ -13,11 +18,17 @@ int gst_main (int argc, char *argv[]) {
 
     pipeline = gst_pipeline_new(PIPELINE_NAME);
 
-    src = gst_element_factory_make("testvideosrc", "src");
+    src = gst_element_factory_make("videotestsrc", "src");
     sink = gst_element_factory_make("autovideosink", "sink");
-    caps_filter = gst_element_factory_make("video/x-raw, height=400, width=600", "caps_filter");
+    caps_filter = gst_element_factory_make("capsfilter", "caps_filter");
 
-    g_object_set(src, "pattern", 2, NULL);
+    check_element_created(pipeline, "pipeline\0");
+    check_element_created(src, "src\0");
+    check_element_created(caps_filter, "caps_filter\0");
+    check_element_created(sink, "sink\0");
+    
+    g_object_set(src, "pattern", 1, NULL);
+    g_object_set(caps_filter, "caps", gst_caps_from_string("video/x-raw, height=200, width=600"), NULL);
 
     gst_bin_add_many(GST_BIN(pipeline), src, caps_filter, sink, NULL);
 
@@ -45,6 +56,7 @@ int gst_main (int argc, char *argv[]) {
     else 
         g_print("Unknown message type.");
     
+
 
     gst_object_unref(bus);
     gst_message_unref(msg);
