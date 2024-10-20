@@ -14,3 +14,6 @@ target_link_libraries(basic-t2_1 PkgConfig::gst)
 
 add_executable(basic-t3 basic_tutorials/t3.c)
 target_link_libraries(basic-t3 PkgConfig::gst)
+
+add_executable(basic-t3_1 basic_tutorials/t3_1.c)
+target_link_libraries(basic-t3_1 PkgConfig::gst)
