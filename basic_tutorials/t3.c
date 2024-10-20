@@ -95,7 +95,10 @@ int gst_main (int argc, char *argv[]) {
     // gst_bin_add_many(GST_BIN(ppln_elements.pipeline), ppln_elements.decoder, NULL);
     // gst_bin_add_many(GST_BIN(ppln_elements.pipeline), ppln_elements.audioconvert, ppln_elements.audioresample, ppln_elements.audiosink, NULL);
     // gst_bin_add_many(GST_BIN(ppln_elements.pipeline), ppln_elements.videoconvert, ppln_elements.videosink, NULL);
-    gst_bin_add_many(GST_BIN(ppln_elements.pipeline), ppln_elements.decoder, ppln_elements.audioconvert, ppln_elements.audioresample, ppln_elements.audiosink, ppln_elements.videoconvert, ppln_elements.videosink, NULL);
+    gst_bin_add_many(GST_BIN(ppln_elements.pipeline), ppln_elements.decoder,
+            ppln_elements.audioconvert, ppln_elements.audioresample, ppln_elements.audiosink,
+            // ppln_elements.videoconvert, ppln_elements.videosink,
+            NULL);
 
     // link elements
     // how is the first element in pipeline decided? does a source element get auto assigned as first element in pipeline? what if multiple source elements
